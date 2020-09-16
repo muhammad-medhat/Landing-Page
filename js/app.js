@@ -97,16 +97,13 @@ menuBar.forEach((element) => {
 
         let sectionId = element.getAttribute('data-nav');
         let section = document.getElementById(sectionId);
-        //console.log(section);
         section.scrollIntoView( {behavior:'smooth', block:'start'}   );
-        //navBlock.classList.toggle('active');
-        toggleSectionsClass(sectionId, 'section-active');
+        toggleSectionsClass(section, 'section-active');
     });
 });
 
 // Set sections as active
-function toggleSectionsClass(sectionId, toggleClass){
+function toggleSectionsClass(section, toggleClass){
     removeClass('section', toggleClass);
-    section = document.getElementById(sectionId);
     section.classList.toggle(toggleClass);
 }
