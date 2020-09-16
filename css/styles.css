@@ -229,3 +229,10 @@ section.section-active .landing__container::after {
 .nav-active{
     font-weight: bold;
 }
+.display-none{
+    display:none;
+}
+
+.display-block{
+    display:block;
+}

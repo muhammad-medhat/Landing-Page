@@ -28,11 +28,23 @@ const sections = [
 const htmlSections = document.querySelectorAll('section');
 const navItemsStyle = '#navbar__list li';
 
+const scrollTimeout = 5000; // 5 sec timeout
+
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
+function showNavbar(){
+    const menu = document.querySelector('.navbar__menu');
+    menu.classList.add('display-block');
+}
+
+function hideNavbar(){
+    const menu = document.querySelector('.navbar__menu');
+    menu.classList.add('display-none');
+}
+
 function inViewport(block){
     const rectTop = block.getBoundingClientRect().top;
     return rectTop < window.innerHeight
@@ -65,7 +77,17 @@ document.addEventListener('scroll', function(){
         }
     });
 });
+/* Suggested: Hide fixed navigation bar while not scrolling (it should still be present on page load).
+    * Hint: setTimeout can be used to check when the user is no longer scrolling. 
+    */
+var  isScrolling;
+document.addEventListener('scroll', function(){
 
+    
+    clearTimeout(isScrolling);
+    isScrolling = setTimeout(hideNavbar, scrollTimeout);
+});
+document.addEventListener('mouseenter',showNavbar);
 
 // Scroll to anchor ID using scrollTO event
 
