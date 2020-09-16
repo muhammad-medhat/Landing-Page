@@ -17,7 +17,7 @@
  * Define Global Variables
  * 
 */
-let sections = [
+const sections = [
     {id:"section1",  text:"Section 1", dataNav:'section1'}, 
     {id:"section2",  text:"Section 2", dataNav:'section2'},         
     {id:"section3",  text:"Section 3", dataNav:'section3'}, 
@@ -25,6 +25,7 @@ let sections = [
     {id:"section5",  text:"Section 5", dataNav:'section5'}, 
     {id:"section6",  text:"Section 6", dataNav:'section6'} 
 ];
+const htmlSections = document.querySelectorAll('section');
 const navItemsStyle = '#navbar__list li';
 
 /**
@@ -32,12 +33,13 @@ const navItemsStyle = '#navbar__list li';
  * Start Helper Functions
  * 
 */
+function inViewport(block){
+    const rectTop = block.getBoundingClientRect().top;
+    return rectTop < window.innerHeight
+}
 
 function removeClass(from, className){
     var elements = document.querySelectorAll(from);
-
-    console.log(from);
-
     elements.forEach( el=> {
         el.classList.remove(className);
     });
@@ -53,6 +55,16 @@ function removeClass(from, className){
 
 
 // Add class 'active' to section when near top of viewport
+document.addEventListener('scroll', function(){
+
+    htmlSections.forEach(sec=>{
+        // console.log(sec);
+        if(inViewport(sec)){
+            removeClass('section', 'section-active');
+            sec.classList.toggle('section-active');
+        }
+    });
+});
 
 
 // Scroll to anchor ID using scrollTO event
@@ -84,12 +96,17 @@ menuBar.forEach((element) => {
         element.classList.toggle('nav-active');
 
         let sectionId = element.getAttribute('data-nav');
-        let navBlock=document.getElementById(sectionId);
-        //console.log(navBlock);
-        navBlock.scrollIntoView( {behavior:'smooth', block:'start'}   );
+        let section = document.getElementById(sectionId);
+        //console.log(section);
+        section.scrollIntoView( {behavior:'smooth', block:'start'}   );
         //navBlock.classList.toggle('active');
-        //toggleSectionsClass(sectionId, 'active');
+        toggleSectionsClass(sectionId, 'section-active');
     });
 });
 
 // Set sections as active
+function toggleSectionsClass(sectionId, toggleClass){
+    removeClass('section', toggleClass);
+    section = document.getElementById(sectionId);
+    section.classList.toggle(toggleClass);
+}
