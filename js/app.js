@@ -47,7 +47,17 @@ function hideNavbar(){
 
 function inViewport(block){
     const rectTop = block.getBoundingClientRect().top;
+   // console.log(rectTop +', ' + window.innerHeight);
     return rectTop < window.innerHeight
+}
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 
 function removeClass(from, className){
@@ -83,14 +93,33 @@ document.addEventListener('scroll', function(){
 var  isScrolling;
 document.addEventListener('scroll', function(){
 
-    
     clearTimeout(isScrolling);
     isScrolling = setTimeout(hideNavbar, scrollTimeout);
 });
 document.addEventListener('mouseenter',showNavbar);
 
 // Scroll to anchor ID using scrollTO event
+function moveTop(){
+    const scrollTop = document.querySelector('main');
+    scrollTop.scrollIntoView( {behavior:'smooth', block:'start'}   );
+}
 
+/*
+ * Suggested:
+ * Add a scroll to top button on the page that’s only 
+ * visible when the user scrolls below the fold of the page.
+*/
+document.addEventListener('scroll', function(){
+    btn = document.querySelector('.buttom');
+    if(isInViewport(btn)){
+        btn.classList.add('fade-in');
+    }else{
+        if(btn.classList.contains('fade-in')){
+            btn.classList.remove('fade-in')
+            btn.classList.add('fade-out');
+        }
+    }
+});
 
 /**
  * End Main Functions
