@@ -68,11 +68,15 @@ section {
     padding-left: 0;
     margin: 0;
     text-align: right;
+    height: 2em;
+    padding: 1em 0 0 0;
 }
 
 .navbar__menu li {
     display: inline-block;
-}
+    color: #000;
+    margin: 0 10px;
+    cursor: pointer;}
 
 .navbar__menu .menu__link {
     display: block;
@@ -220,4 +224,8 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+/******************************************/
+.nav-active{
+    font-weight: bold;
 }
