@@ -67,6 +67,15 @@ function removeClass(from, className){
     });
 }
 
+function createElement(tag, text, addElement, elClass=''){
+    const el = document.createElement(tag);
+    el.innerText=addElement.getAttribute(text);
+    if(elClass != ''){
+        el.classList.add(elClass);
+    }
+
+    addElement.prepend(el);
+}
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -113,12 +122,36 @@ document.addEventListener('scroll', function(){
     btn = document.querySelector('.buttom');
     if(isInViewport(btn)){
         btn.classList.add('fade-in');
-    }else{
+    } else{
         if(btn.classList.contains('fade-in')){
             btn.classList.remove('fade-in')
             btn.classList.add('fade-out');
         }
     }
+});
+
+/*
+ * Sugested: Make sections collapsible.
+ */
+
+const sectionsList = document.querySelectorAll('section');
+
+sectionsList.forEach(element=>{
+    
+    createElement('h2', 'data-name', element, 'accordion');
+
+
+    element.addEventListener('click', function(){    
+        
+        element.classList.toggle('active');
+
+        var content = element.querySelector('.landing__container');
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+    });
 });
 
 /**

@@ -57,7 +57,7 @@ main {
 
 section {
     position: relative;
-    min-height: 80vh;
+    /* min-height: 80vh; */
 }
 
 
@@ -269,4 +269,23 @@ section .move-top{
     to{
         opacity: 0;
     }
+}
+.accordion{
+    background-color: #27204a55;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: all .5s ease-in-out;
+}
+.section-active, .accordion:hover {
+    background-color: #777;
+}
+.landing__container{
+    display: none;
+    overflow: hidden;
 }
