@@ -17,8 +17,8 @@ document.querySelectorAll('#navbar__list li').forEach(li =>{
     li.addEventListener('click', e => {
         console.log(li)
         const sec = document.getElementById(li.dataset.nav)
-        // reveal(sec)
         toggleSectionsStyle(sec)
+        smoothScroll(sec)
     })
 
 })
@@ -48,10 +48,13 @@ function createHeader (sec)  {
 }   
 function toggleSectionsStyle(sec){
 
-    if (sec.style.display === "block") {
-        sec.style.display = "none";
+    // if (sec.style.display === "block") {
+    if (sec.classList[sec.classList.length - 1] == collapseSectionCss) {
+        // sec.style.display = "none";
+        sec.classList.add(activeSectionCss)
     } else {
-        sec.style.display = "block";
+        // sec.style.display = "block";
+        sec.classList.add(collapseSectionCss)
     } 
     collapseAll(sec)
 }
@@ -64,7 +67,8 @@ function createSectionTitle(sec){
 function collapseAll(section){
     document.querySelectorAll('section').forEach(sec=>{
         if(sec != section){
-            sec.style.display = 'none'
+            sec.classList.remove(activeSectionCss)
+            // sec.style.display = 'none'
         }           
     })
 }
@@ -72,6 +76,14 @@ function collapseAll(section){
 
 
 
+function smoothScroll(sec){
+    sec.scrollIntoView( {behavior:'smooth', block:'start'}   )
+}
+
+function moveTop(){
+    const scrollTop = document.querySelector('main');
+    scrollTop.scrollIntoView( {behavior:'smooth', block:'start'}   );
+}
 
 ////////////////////////////////////////////////////////////////////////
 
