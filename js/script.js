@@ -1,8 +1,10 @@
 const activeSectionCss = 'section-active'
 const collapseSectionCss = 'section-collapse'
+const activeLi = 'li-active'
 let activeSection = false
-
 const navbarList = document.getElementById('navbar__list');
+// const navbarList = document.getElementById('navbarSupportedContent');
+// const navbarList = document.querySelector('.navbar-nav');
 
 document.querySelectorAll('section').forEach(sec=>{
     // Build menu 
@@ -15,10 +17,10 @@ document.querySelectorAll('section').forEach(sec=>{
 
 document.querySelectorAll('#navbar__list li').forEach(li =>{
     li.addEventListener('click', e => {
-        console.log(li)
         const sec = document.getElementById(li.dataset.nav)
         toggleSectionsStyle(sec)
         smoothScroll(sec)
+        activateLi(li)
     })
 
 })
@@ -28,12 +30,12 @@ document.querySelectorAll('#navbar__list li').forEach(li =>{
 function generateLink (sec, menu)  {
     const li = document.createElement('li')
     
-    const liSpan = document.createElement('span')
-    liSpan.innerText = sec.dataset.name
-    console.log(liSpan)
-    li.appendChild( liSpan)
-    console.log(li);
+    // const liSpan = document.createElement('span')
+    // liSpan.innerText = sec.dataset.name
+    // li.appendChild( liSpan)
+    li.innerHTML = sec.dataset.name
     li.setAttribute('data-nav', sec.id)
+    li.classList.add('nav-item', 'scrollto')
     menu.appendChild(li);
 }
 
@@ -73,8 +75,15 @@ function collapseAll(section){
     })
 }
 
-
-
+function activateLi(li){
+    removeClass(document.querySelectorAll('#navbar__list li'), activeLi)
+    li.classList.toggle(activeLi)
+}
+function removeClass(elmts, cls){
+    elmts.forEach(el=>{
+        el.classList.remove(cls)
+    })
+}
 
 function smoothScroll(sec){
     sec.scrollIntoView( {behavior:'smooth', block:'start'}   )

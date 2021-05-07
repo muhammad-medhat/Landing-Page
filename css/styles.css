@@ -21,38 +21,48 @@ body{
 .page__header{}
 .page__header .navbar__menu{
     border: solid transparent;
-    background-color: rgb(238, 238, 220);
+    /*  background-color: rgb(238, 238, 220); */
     min-height: 2em;
 }
-.page__header .navbar__menu::after{
+/* .page__header .navbar__menu::after{
     content: '';
-}
+} */
 
 .page__header .navbar__menu #navbar__list{    
-    border: solid green;
+    /* border: solid 1px green; */
     list-style-type: none;
     text-align: right;
-
 }
 .page__header .navbar__menu #navbar__list li{    
     display: inline-block;
-    margin: 0 10px;    
+    margin: 0 10px;
+    padding: 5px;  
     cursor: pointer;
-    border: solid 1px;
+    /* border: solid 1px transparent; */
     height: 2em;
+    transition: all 1s ease-in-out;
+
 }
 .page__header .navbar__menu #navbar__list li span{
 
-    margin: 10px;
+    /* margin: 10px; */
 }
-.page__header .navbar__menu #navbar__list li span:hover{
+#navbar__list li:hover{
+    /* transition: all 2s; */
+    border-bottom: solid 1px var(--selected-color);
+}
+/* .page__header .navbar__menu #navbar__list li span:hover{
+    border-bottom: solid  var(--main-hover);
+}  */
+.li-active{
     background-color: var(--selected-color);
-
+    border-radius: 5px;
+    color: #fff;
 }
 
 .page__header .navbar__menu #navbar__list li:hover{   
 
- }
+}
 
 .main__hero{}
 .main__hero h1{}

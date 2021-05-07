@@ -8,71 +8,30 @@
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">  <!-- Load Styles -->
   <!-- <link href="css/styles.css" rel="stylesheet"> -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"> -->
-    <!-- Vendor CSS Files -->
-    <link href="css/vendor/aos/aos.css" rel="stylesheet">
-    <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="css/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="css/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <link href="css/styles.css" rel="stylesheet">
-  <!-- <link href="css/b/styles.css" rel="stylesheet"> -->
 </head>
 <body>
   <div class="container">
 
   <!-- HTML Follows BEM naming conventions 
   IDs are only used for sections to connect menu achors to sections -->
-  <div id="topbar" class="d-flex align-items-center"> 
+  <header class="page__header">
+    <nav class="navbar__menu">
+      <!-- Navigation starts as empty UL that will be populated with JS -->
+      <ul id="navbar__list"></ul>
+    </nav>
     <div class="social-links d-none d-md-flex align-items-center">
       <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
       <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
       <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
       <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-    </div><!-- End Social links-->
-
-
-</div><!-- End topbar -->
-
-    <header id="header" class="d-flex align-items-center page__header">
-      <div class="container d-flex align-items-center justify-content-between">
-
-        <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>
-        <nav class="navbar__menu navbar navbar-expand-lg navbar-light bg-light">
-          <!-- Navigation starts as empty UL that will be populated with JS -->
-          <!-- <ul> -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-              <ul id="navbar__list" class="navbar-nav"></ul>
-
-              <i class="bi bi-list mobile-nav-toggle"></i>
-
-            </div>
-          <!-- </ul> -->
-        </nav>
-
-      </div>
-    </header>
+    </div>
+  </header>
   <main>
     <header class="main__hero">
       <h1>Landing Page </h1>
     </header>
-
-
-
-    <!-- ======= Hero Section ======= -->
-  <div id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span>Landing</span></h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-      </div>
-    </div>
-  </div><!-- End Hero -->
     <!-- Each Section has an ID (used for the anchor) and 
     a data attribute that will populate the li node.
     Adding more sections will automatically populate nav.
