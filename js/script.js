@@ -31,11 +31,14 @@ function generateLink (sec, menu)  {
     const li = document.createElement('li')
     
     // const liSpan = document.createElement('span')
-    // liSpan.innerText = sec.dataset.name
-    // li.appendChild( liSpan)
-    li.innerHTML = sec.dataset.name
+    const liSpan = document.createElement('a')
+    liSpan.innerText = sec.dataset.name
+    liSpan.classList.add('nav-link')
+    li.appendChild( liSpan)
+
+    // li.innerHTML = sec.dataset.name
     li.setAttribute('data-nav', sec.id)
-    li.classList.add('nav-item', 'scrollto')
+    li.classList.add('nav-item', 'scrollto1')
     menu.appendChild(li);
 }
 
